@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-pic-content{% endblock %}
+
+{% block content %}
+    {% if page.body %}
+        <div class="body">
+            {{ page.body }}
+        </div>
+    {% endif %}
+{% endblock %}
