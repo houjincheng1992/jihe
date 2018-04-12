@@ -10,6 +10,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django import forms
 from django.db import models
 from django.template.response import TemplateResponse
 
@@ -21,31 +22,33 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.admin.edit_handlers import PageChooserPanel
 from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
 class HomePage(Page):
     """
     几何首页model
     """
-    logo_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name=u'首页logo',
-        help_text=u'首页logo'
-    )
-
-    tel = models.CharField(max_length=255, null=True, blank=True, help_text=u'联系方式')
-    panels = [
-        ImageChooserPanel('logo_image'),
-        FieldPanel('tel'),
-    ]
-
-    content_panels = Page.content_panels + panels
+    # logo_image = models.ForeignKey(
+    #     'wagtailimages.Image',
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.SET_NULL,
+    #     related_name=u'首页logo',
+    #     help_text=u'首页logo'
+    # )
+    #
+    # tel = models.CharField(max_length=255, null=True, blank=True, help_text=u'联系方式')
+    # panels = [
+    #     ImageChooserPanel('logo_image'),
+    #     FieldPanel('tel'),
+    # ]
+    #
+    # content_panels = Page.content_panels + panels
 
     class Meta(object):
         verbose_name_plural = verbose_name = u'几何装饰首页样式'
@@ -113,5 +116,66 @@ class CommonContent(Page):
         verbose_name_plural = verbose_name = u'几何装饰通用配置页面'
 
 
+class Author(Page):
+    """
+    几何设计师
+    """
+    position = models.CharField(max_length=20, null=True, blank=True, help_text=u'职位')
+    name = models.CharField(max_length=20, help_text=u'姓名')
+    working_years = models.IntegerField(null=True, blank=True, help_text=u'从业年限')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name=u'设计师照片',
+        help_text=u'设计师照片'
+    )
+    # area = models.CharField(max_length=50, null=True, blank=True, help_text=u'区域')
+    # home = models.CharField(max_length=20, null=True, blank=True, help_text=u'户型')
+    # style = models.CharField(max_length=50, null=True, blank=True, help_text=u'风格')
+    # property = models.CharField(max_length=50, null=True, blank=True, help_text=u'楼盘')
+    # home_area = models.CharField(max_length=20, null=True, blank=True, help_text=u'面积')
+    profile = StreamField([('paragraph', blocks.RichTextBlock())], null=True, blank=True, help_text=u'简介')
+
+    panels = [
+        FieldPanel('position'),
+        FieldPanel('name'),
+        FieldPanel('working_years'),
+        ImageChooserPanel('image'),
+        StreamFieldPanel('profile'),
+        # FieldPanel('area'),
+        # FieldPanel('home'),
+        # FieldPanel('style'),
+        # FieldPanel('property'),
+        # FieldPanel('home_area'),
+    ]
+    content_panels = Page.content_panels + panels
+
+    class Meta(object):
+        """
+        meta
+        """
+        verbose_name_plural = verbose_name = u'几何装饰设计师'
 
 
+class DecorateCase(Page):
+    """
+    装修案例
+    """
+    images = StreamField([('image_slider', blocks.ListBlock(ImageChooserBlock(), icon='image', label='Slider')),], null=True, help_text=u'装修图片')
+    # images = models.ManyToManyField('wagtailimages.Image', help_text=u'装修图片')
+    designer = models.ForeignKey('home.Author', null=True, help_text=u'设计师', on_delete=models.SET_NULL)
+    panels = [
+        # ImageChooserPanel('images'),
+        StreamFieldPanel('images'),
+        # FieldPanel('images', widget=forms.CheckboxSelectMultiple),
+        PageChooserPanel('designer'),
+    ]
+    content_panels = Page.content_panels + panels
+
+    class Meta(object):
+        """
+        meta
+        """
+        verbose_name_plural = verbose_name = u'几何装修案例'
