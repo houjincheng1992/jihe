@@ -5,19 +5,23 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    {% if page.logo_image %}
-        <div class="image">
-            {% image page.logo_image width-373 as photo %}
-            <img src="{{ photo.url }}" width="373" height="80" alt="{{ photo.alt }}" />
-        </div>
-    {% endif %}
-    {% if page.tel %}
-        <div class="tel">
-            <div class="tel_num">
-                {{ page.tel }}
-            </div>
-        </div>
-    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+{#    {% if page.logo_image %}#}
+{#        <div class="image">#}
+{#            {% image page.logo_image width-373 as photo %}#}
+{#            <img src="{{ photo.url }}" width="373" height="80" alt="{{ photo.alt }}" />#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    {% if page.tel %}#}
+{#        <div class="tel">#}
+{#            <div class="tel_num">#}
+{#                {{ page.tel }}#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
     {% if pic_content %}
         {% for content in pic_content %}
             <img src="/media/{{ content.image.file }}" />
