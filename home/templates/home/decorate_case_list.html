@@ -40,6 +40,7 @@
             {% for image in case.images %}
                 <img src="{{ image }}">
             {% endfor %}
+            <a href="{% slugurl case.slug %}"> 链接 </a>
         {% endfor %}
     {% endif %}
 

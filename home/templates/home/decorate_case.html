@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-pic-content{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if page %}
+        <label>单个装修案例</label>
+        {{ page.area }}
+        {{ page.home }}
+        {{ page.style }}
+        {{ page.property }}
+        {{ page.home_area }}
+        {{ page.profile }}
+        {{ page.status }}
+        {{ page.type }}
+        {% for case in cases %}
+            {% for image in case.images %}
+                <img src="{{ image }}">
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

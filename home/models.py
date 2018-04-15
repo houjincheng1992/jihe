@@ -264,6 +264,29 @@ class DecorateCase(Page):
         """
         verbose_name_plural = verbose_name = u'几何装修案例'
 
+    def get_context(self, request, *args, **kwargs):
+        """
+        内容获取
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        slug = self.slug
+        context = super(DecorateCase, self).get_context(request, *args, **kwargs)
+        case_objs = DecorateCase.objects.live().filter(title=slug).values()
+        print(case_objs)
+        res_list = []
+        for case in case_objs:
+            li_list = BeautifulSoup(str(case["images"]), "html5lib").find_all("img")
+            image_list = []
+            for li in li_list:
+                image_list.append(li["src"])
+            case["images"] = image_list
+            res_list.append(case)
+        context["cases"] = res_list
+        return context
+
 
 class DecorateCaseList(Page):
     """
