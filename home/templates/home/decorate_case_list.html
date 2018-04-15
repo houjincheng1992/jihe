@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-pic-content{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if area_list %}
+        <label>区域</label>
+        {% for area in area_list %}
+            {{ area }}<br>
+        {% endfor %}
+    {% endif %}
+    {% if home_list %}
+        <label>户型</label>
+        {% for home in home_list %}
+            {{ home }}<br>
+        {% endfor %}
+    {% endif %}
+    {% if style_list %}
+        <label>风格</label>
+        {% for style in style_list %}
+            {{ style }}<br>
+        {% endfor %}
+    {% endif %}
+    {% if cases %}
+        {% for case in cases %}
+            <label>单个装修案例</label>
+            {{ case.area }}
+            {{ case.home }}
+            {{ case.style }}
+            {{ case.property }}
+            {{ case.home_area }}
+            {{ case.profile }}
+            {{ case.status }}
+            {{ case.type }}
+            {% for image in case.images %}
+                <img src="{{ image }}">
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <ul class="pagination">
+    {% if cases.has_previous %}
+        <li>
+            <a href="?page={{ cases.previous_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-left">前一页</i></a>
+        </li>
+    {% endif %}
+
+    {% for page_num in cases.paginator.page_range %}
+        <li {% if page_num == cases.number %} class="active"{% endif %}>
+            <a href="?page={{ page_num }}&page_size={{ page_size }}">{{ page_num }}</a>
+        </li>
+    {% endfor %}
+
+    {% if cases.has_next %}
+        <li>
+            <a href="?page={{ cases.next_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-right">后一页</i></a>
+        </li>
+    {% endif %}
+    </ul>
+
+{% endblock %}

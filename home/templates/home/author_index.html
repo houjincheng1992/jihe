@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-pic-content{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if position_list %}
+        {% for position in position_list %}
+            {{ position }}<br>
+        {% endfor %}
+    {% endif %}
+    {% if authors %}
+        {% for author in authors %}
+            <div>
+                <label>单个设计师</label>
+                {{ author.position }}
+                {{ author.name }}
+                {{ author.working_years }}
+                <img src="/media/{{ author.image.file }}" />
+                {{ author.profile }}
+                <a href="{% pageurl author %}"> 链接 </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <ul class="pagination">
+    {% if authors.has_previous %}
+        <li>
+            <a href="?page={{ authors.previous_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-left">前一页</i></a>
+        </li>
+    {% endif %}
+
+    {% for page_num in authors.paginator.page_range %}
+        <li {% if page_num == authors.number %} class="active"{% endif %}>
+            <a href="?page={{ page_num }}&page_size={{ page_size }}">{{ page_num }}</a>
+        </li>
+    {% endfor %}
+
+    {% if authors.has_next %}
+        <li>
+            <a href="?page={{ authors.next_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-right">后一页</i></a>
+        </li>
+    {% endif %}
+    </ul>
+{% endblock %}
