@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {{ page.position }}<br>
+    {{ page.name }}<br>
+    {{ page.working_years }}<br>
+    <img src="/media/{{ page.image.file }}" />
+    {{ page.profile }}
+    <div class="classify-case">
+        <label>典型案例</label>
+        {% for case in cases %}
+            {{ case.area }}
+            {{ case.home }}
+            {{ case.style }}
+            {{ case.property }}
+            {{ case.home_area }}
+            {{ case.profile }}
+            {{ case.status }}
+            {{ case.type }}
+            {% for image in case.images %}
+                <img src="{{ image }}">
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
