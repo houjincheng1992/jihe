@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if page.body %}
+        {{ page.body }}
+    {% endif %}
+{% endblock %}
