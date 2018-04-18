@@ -1,0 +1,18 @@
+1、python 版本
+
+    目前python版本需要使用python3
+
+2、依赖包安装
+
+    pip install -r requirements.txt
+
+3、启动前准备
+
+    python manage.py makemigrations jihe
+    python manage.py makemigrations home
+    python manage.py makemigrations
+    python manage.py migrate
+
+4、启动
+
+    python manage runserver 0.0.0.0
