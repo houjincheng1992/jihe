@@ -1,0 +1,51 @@
+.main {
+    min-width: 1200px;
+}
+.navigation {
+    height: 68px;
+    background: #D7000C;
+    width: 100%;
+    line-height: 68px;
+    padding: 0px 120px 0px 120px;
+    font-size: 18px;
+    margin-top: 12px;
+}
+.navigation ul {
+    height: 100%;
+}
+.navigation ul li {
+    margin-right: 62px;
+    height: 100%;
+}
+.navigation ul li a:link {
+    color: #ffffff;
+    background: #D7000C;
+    display: inline-block;
+    height: 68px;
+    line-height: 20px;
+    padding: 26px;
+}
+.navigation ul li a:visited {
+    color: #ffffff;
+    background: #D7000C;
+    display: inline-block;
+    height: 68px;
+    line-height: 20px;
+    padding: 26px;
+}
+.navigation ul li a:hover {
+    color: grey;
+    background: #D7000C;
+    display: inline-block;
+    height: 68px;
+    line-height: 20px;
+    padding: 26px;
+}
+.navigation ul li a:active {
+    color: #ffffff;
+    background: #D7000C;
+    display: inline-block;
+    height: 68px;
+    line-height: 20px;
+    padding: 26px;
+}

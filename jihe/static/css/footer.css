@@ -1,0 +1,15 @@
+.wFooter {
+    min-width: 1200px !important;
+    background: #1D1D1D;
+    padding: 20px 0;
+    margin-top: 120px;
+}
+.footerDB {
+    width: 1200px !important;
+    margin: 0 auto;
+}
+.wFooter .footerDB p {
+    font: 13px "微软雅黑";
+    color: #666;
+    margin-top: 6px;
+}

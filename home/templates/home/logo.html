@@ -1,0 +1,20 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailuserbar %}
+
+<!-- {% block body_class %}template-homepage{% endblock %} -->
+
+<!-- {% block footer %} -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/logo.css' %}">
+    <!-- 首页footer -->
+    <div class="logo_block">
+        <div class="tel">
+            <img src="/media/images/call.png" />
+            <div class="tel_number">
+                <a href="tel:021-65511234">021-65511234</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src='/media/images/logo.jpg' class="logo_img" />
+        </div>
+    </div>
+<!-- {% endblock %} -->
