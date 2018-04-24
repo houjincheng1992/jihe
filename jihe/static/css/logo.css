@@ -1,0 +1,37 @@
+.logo_block {
+    padding: 30px 120px 20px 120px;
+    height: 100px;
+}
+.logo {
+    width: 60px;
+    height: 60px;
+}
+.logo_img {
+    max-width: 180px;
+    max-height: 80px;
+    height: auto;
+    width: auto;
+}
+.tel {
+    float: right;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+}
+.tel img {
+    width: 38px;
+    height: 38px;
+}
+.tel_number {
+    float: right;
+    font-size: 16px;
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+.tel_number a {
+    color: red;
+    font-size: 20px;
+}
