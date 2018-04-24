@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailuserbar %}
+
+<!-- {% block body_class %}template-homepage{% endblock %} -->
+
+{% block footer %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <!-- 首页footer -->
+    <div class="wFooter">
+        <div class="footerDB">
+            <p>
+                Copyright&nbsp;©&nbsp;2003-2023&nbsp;Sh-hongmayi.com &nbsp;All Rights Reserved. &nbsp; 
+                <a href="http://www.sh-hongmayi.com/">上海红蚂蚁装潢设计有限公司</a>
+                &nbsp;&nbsp;&nbsp; 版权所有&nbsp;&nbsp;&nbsp; 
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备07509377号-1</a>
+            </p>
+            <p>地址：上海黄兴路1661号-1675号</p>
+            <p>咨询电话：021-65112035</p>
+        </div>
+    </div>
+{% endblock %}

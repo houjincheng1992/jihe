@@ -1,0 +1,17 @@
+.wrap {
+    min-width: 1200px;
+}
+.carousel_wrap {
+    margin: 108px auto 0 auto;
+    height: 500px;
+    width: 100%;
+}
+.carousel {
+    height: 100% !important;
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100% !important;
+}
+.carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active {
+    height: 500px !important;
+}
