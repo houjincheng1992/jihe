@@ -1,48 +1,64 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags wagtailimages_tags %}
-
+{% load static %}
 {% block body_class %}template-pic-content{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/authorList.css' %}">
     <br>
     <br>
     <br>
     <br>
-    {% if position_list %}
-        {% for position in position_list %}
-            {{ position }}<br>
-        {% endfor %}
-    {% endif %}
-    {% if authors %}
-        {% for author in authors %}
-            <div>
-                <label>单个设计师</label>
-                {{ author.position }}
-                {{ author.name }}
-                {{ author.working_years }}
-                <img src="/media/{{ author.image.file }}" />
-                {{ author.profile }}
-                <a href="{% pageurl author %}"> 链接 </a>
+    <div class="authorPage">
+        <div class="weizhi">
+            <span>当前位置:&nbsp;</span>
+            <a href="/">网站首页</a>
+            &nbsp;>&nbsp;
+            设计师列表
+        </div>
+        <!-- {% if position_list %}
+            {% for position in position_list %}
+                {{ position }}<br>
+            {% endfor %}
+        {% endif %} -->
+        {% if authors %}
+            <div class="authors">
+                <ul>
+                    {% for author in authors %}
+                        <li key={{ author }}>
+                            <a href="{% pageurl author %}"><img class="authorImg" src="/media/{{ author.image.file }}" /></a>
+                            <div class="authorInfo">
+                                <p class="author_name">{{ author.name }}</p>
+                                <div class="author_profile">{{ author.profile }}</div>
+                                <span class="author_workyears">经验： {{ author.working_years }}年</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
+        {% endif %}
+        <!-- 翻页功能开发 -->
+        <!-- <ul class="pagination">
+        {% if authors.has_previous %}
+            <li>
+                <a href="?page={{ authors.previous_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-left">前一页232323</i></a>
+            </li>
+        {% endif %}
+
+        {% for page_num in authors.paginator.page_range %}
+            <li {% if page_num == authors.number %} class="active"{% endif %}>
+                <a href="?page={{ page_num }}&page_size={{ page_size }}">{{ page_num }}</a>
+            </li>
         {% endfor %}
-    {% endif %}
-    <ul class="pagination">
-    {% if authors.has_previous %}
-        <li>
-            <a href="?page={{ authors.previous_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-left">前一页</i></a>
-        </li>
-    {% endif %}
 
-    {% for page_num in authors.paginator.page_range %}
-        <li {% if page_num == authors.number %} class="active"{% endif %}>
-            <a href="?page={{ page_num }}&page_size={{ page_size }}">{{ page_num }}</a>
-        </li>
-    {% endfor %}
-
-    {% if authors.has_next %}
-        <li>
-            <a href="?page={{ authors.next_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-right">后一页</i></a>
-        </li>
-    {% endif %}
-    </ul>
+        {% if authors.has_next %}
+            <li>
+                <a href="?page={{ authors.next_page_number }}&page_size={{ page_size }}"><i class="fa fa-angle-right">后一页qwqs</i></a>
+            </li>
+        {% endif %}
+        </ul> -->
+    </div>
+    <script type="text/javascript" src="{% static 'jquery/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap3/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/author.js' %}"></script>
 {% endblock %}
