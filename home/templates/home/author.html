@@ -40,14 +40,35 @@
                 </div>
             </div>
         </div>
+        <div class="products">
+            <div class="products_bt">
+                <h2>{{ page.name }}的作品</h2>
+            </div>
+            <div class="pros">
+                <ul>
+                    {% for case in cases %}
+                        {% for image in case.images %}
+                            <li>
+                                <img class="proImg" src="{{ image }}" />
+                                <div class="proInfo">
+                                    <p class="pro_type">{{ case.type }}</p>
+                                    <div class="pro_name">{{ case.name }}</div>
+                                    <span class="pro_style">风格： {{ case.style }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         <!-- {{ page.position }}<br>
         {{ page.name }}<br>
         {{ page.working_years }}<br>
-        <img src="/media/{{ page.image.file }}" />
-        {{ page.profile }}
-        <div class="classify-case">
-            <label>典型案例</label>
-            {% for case in cases %}
+        <img src="/media/{{ page.image.file }}" /> -->
+        <!-- {{ page.profile }} -->
+        <!-- <div class="classify-case"> -->
+            <!-- <label>典型案例</label> -->
+            <!-- {% for case in cases %}
                 {{ case.area }}
                 {{ case.home }}
                 {{ case.style }}

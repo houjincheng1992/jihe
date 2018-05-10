@@ -66,3 +66,53 @@
     color: #FFF;
     background: #C00;
 }
+.proImg {
+    width: 285px;
+    height:300px;
+    display: block;
+}
+.pros {
+    margin: 0 auto;
+    width: 1200px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.pros ul {
+    margin-left: -58px;
+    margin-bottom: 10px;
+    width: 1260px;
+    overflow: hidden;
+}
+.pros ul li {
+    box-sizing: border-box;
+    float: left;
+    width: 285px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    list-style: none;
+}
+.proInfo {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-color: rgba(0,0,0,.6);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    color: #fff;
+    text-align: left;
+    padding-top: 150px;
+    padding-left: 30px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all ease-in-out .3s;
+    pointer-events:none;
+}
+.proInfo .pro_name {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
