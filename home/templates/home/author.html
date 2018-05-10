@@ -1,34 +1,87 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
-
+{% load static %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/author.css' %}">
     <br>
     <br>
     <br>
     <br>
-    {{ page.position }}<br>
-    {{ page.name }}<br>
-    {{ page.working_years }}<br>
-    <img src="/media/{{ page.image.file }}" />
-    {{ page.profile }}
-    <div class="classify-case">
-        <label>典型案例</label>
-        {% for case in cases %}
-            {{ case.area }}
-            {{ case.home }}
-            {{ case.style }}
-            {{ case.property }}
-            {{ case.home_area }}
-            {{ case.profile }}
-            {{ case.status }}
-            {{ case.type }}
-            {% for image in case.images %}
-                <img src="{{ image }}">
+    <div class="authorPage">
+        <div class="weizhi">
+            <span>当前位置:&nbsp;</span>
+            <a href="/">网站首页</a>
+            &nbsp;>&nbsp;
+            <a href="/设计师列表">设计团队</a>
+            &nbsp;>&nbsp;
+            {{ page.name }}
+        </div>
+        <div class="person clearfix">
+            <div class="authorImg">
+                <img class="pic" src="/media/{{ page.image.file }}" />
+            </div>
+            <div class="authorInfo">
+                <div class="author_name">{{ page.position }}: {{ page.name }}</div>
+                <div class="author_sm">
+                    <p>
+                        <span class="author_sm_b">从业年限：</span>
+                        {{ page.working_years }}年
+                    </p>
+                    <p>
+                        <span class="author_sm_b">简介：</span>
+                    </p>
+                </div>
+                <br>
+                <div class="author_sm">
+                    {{ page.profile }}
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="products_bt">
+                <h2>{{ page.name }}的作品</h2>
+            </div>
+            <div class="pros">
+                <ul>
+                    {% for case in cases %}
+                        {% for image in case.images %}
+                            <li>
+                                <img class="proImg" src="{{ image }}" />
+                                <div class="proInfo">
+                                    <p class="pro_type">{{ case.type }}</p>
+                                    <div class="pro_name">{{ case.name }}</div>
+                                    <span class="pro_style">风格： {{ case.style }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- {{ page.position }}<br>
+        {{ page.name }}<br>
+        {{ page.working_years }}<br>
+        <img src="/media/{{ page.image.file }}" /> -->
+        <!-- {{ page.profile }} -->
+        <!-- <div class="classify-case"> -->
+            <!-- <label>典型案例</label> -->
+            <!-- {% for case in cases %}
+                {{ case.area }}
+                {{ case.home }}
+                {{ case.style }}
+                {{ case.property }}
+                {{ case.home_area }}
+                {{ case.profile }}
+                {{ case.status }}
+                {{ case.type }}
+                {% for image in case.images %}
+                    <img src="{{ image }}">
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div> -->
     </div>
 
 {% endblock %}

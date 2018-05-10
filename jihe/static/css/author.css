@@ -1,0 +1,118 @@
+.authorPage {
+    padding: 0 120px;
+    margin-top: -48px;
+    clear: both;
+}
+.person {
+    margin-top: 40px;
+    width: 1200px;
+}
+.clearfix:after {
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
+}
+.clearfix {
+    *zoom:1;
+}
+.authorImg {
+    width: 400px;
+    float: left;
+}
+.authorImg pic {
+    width: 285px;
+    height:368px;
+    display: block;
+}
+.authorInfo {
+    float: left;
+    margin-left: 40px;
+    width: 750px;
+}
+.authorInfo .author_name {
+    font: bold 20px "微软雅黑","黑体";
+    color: #666;
+    padding: 25px 0;
+}
+.authorInfo .author_sm {
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px #EAB356 dashed;
+}
+.authorInfo .author_sm_b {
+    font: 14px "微软雅黑";
+    color: #666;
+}
+.products {
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.products .products_bt {
+    width: 100%;
+    min-width: 1200px;
+    height: 62px;
+    border-bottom: 1px solid #C00;
+}
+.products .products_bt h2 {
+    float: left;
+    display: block;
+    width: 150px;
+    height: 42px;
+    padding-top: 10px;
+    text-align: center;
+    font: normal 15px "Microsoft YaHei";
+    color: #FFF;
+    background: #C00;
+}
+.proImg {
+    width: 285px;
+    height:300px;
+    display: block;
+}
+.pros {
+    margin: 0 auto;
+    width: 1200px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.pros ul {
+    margin-left: -58px;
+    margin-bottom: 10px;
+    width: 1260px;
+    overflow: hidden;
+}
+.pros ul li {
+    box-sizing: border-box;
+    float: left;
+    width: 285px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    list-style: none;
+}
+.proInfo {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-color: rgba(0,0,0,.6);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    color: #fff;
+    text-align: left;
+    padding-top: 150px;
+    padding-left: 30px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all ease-in-out .3s;
+    pointer-events:none;
+}
+.proInfo .pro_name {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
