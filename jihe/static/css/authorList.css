@@ -76,3 +76,6 @@
     border-top: 1px solid #fff;
     padding-top: 18px;
 }
+.addOpacity {
+    opacity: 1 !important;
+}
